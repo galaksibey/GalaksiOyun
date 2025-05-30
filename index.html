@@ -2,16 +2,22 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>Fare Avcısı</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fare Avcısı</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>🐭 Fare Avcısı Oyunu</h1>
-    <div id="game-area">
-        <div id="mouse"></div>
-    </div>
-    <p>Skor: <span id="score">0</span></p>
-    <script src="script.js"></script>
+  <div class="container">
+    <h1>Fare Avcısı Oyunu</h1>
+    <p class="score">Puan: <span id="score">0</span></p>
+    <div id="gameArea"></div>
+    <button onclick="startGame()">Oyunu Başlat</button>
+    <a href="FareAvcisiOyunu.zip" download>
+      <button class="download-btn">Oyunu İndir</button>
+    </a>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

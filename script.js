@@ -1,25 +1,29 @@
 
-const mouse = document.getElementById("mouse");
-const gameArea = document.getElementById("game-area");
-const scoreDisplay = document.getElementById("score");
-
 let score = 0;
+let gameArea = document.getElementById("gameArea");
+let scoreSpan = document.getElementById("score");
 
-// Rastgele konum ayarla
-function moveMouse() {
-    const maxX = gameArea.clientWidth - 50;
-    const maxY = gameArea.clientHeight - 50;
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
-    mouse.style.left = randomX + "px";
-    mouse.style.top = randomY + "px";
+function startGame() {
+  score = 0;
+  scoreSpan.textContent = score;
+  spawnMouse();
 }
 
-mouse.addEventListener("click", () => {
-    score += 1;
-    scoreDisplay.textContent = score;
-    moveMouse();
-});
+function spawnMouse() {
+  gameArea.innerHTML = "";
+  let mouse = document.createElement("div");
+  mouse.classList.add("mouse");
 
-// Oyunu başlat
-moveMouse();
+  let x = Math.random() * 260;
+  let y = Math.random() * 260;
+  mouse.style.left = x + "px";
+  mouse.style.top = y + "px";
+
+  mouse.onclick = function () {
+    score++;
+    scoreSpan.textContent = score;
+    spawnMouse();
+  };
+
+  gameArea.appendChild(mouse);
+}
