@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fare Avcısı Oyunu</title>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      background: #222;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    h1 {
+      margin-top: 20px;
+    }
+    #gameArea {
+      position: relative;
+      width: 80vw;
+      height: 60vh;
+      margin: 20px auto;
+      background-color: #333;
+      border: 2px solid #fff;
+      overflow: hidden;
+    }
+    #mouse {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: url('https://i.ibb.co/z6hcXnJ/mouse-icon.png') no-repeat center center/contain;
+      cursor: pointer;
+    }
+    #score {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+    #buttons {
+      margin-top: 15px;
+    }
+    button {
+      margin: 0 8px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #00b894;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #019875;
+    }
+    #footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <h1>🐭 Fare Avcısı Oyunu</h1>
+  <div id="score">Puan: 0</div>
+  <div id="gameArea">
+    <div id="mouse"></div>
+  </div>
+  <div id="buttons">
+    <button onclick="restartGame()">Yeniden Başla</button>
+    <button onclick="downloadZip()">Oyunu İndir</button>
+  </div>
+  <div id="footer">
+    © 2025 GalaksiOyun - Tüm Hakları Saklıdır.
+  </div>
+
+  <script>
+    const gameArea = document.getElementById('gameArea');
+    const mouse = document.getElementById('mouse');
+    const scoreDisplay = document.getElementById('score');
+    let score = 0;
+
+    function moveMouse() {
+      const maxX = gameArea.clientWidth - mouse.clientWidth;
+      const maxY = gameArea.clientHeight - mouse.clientHeight;
+      const randX = Math.random() * maxX;
+      const randY = Math.random() * maxY;
+      mouse.style.left = `${randX}px`;
+      mouse.style.top = `${randY}px`;
+    }
+
+    mouse.addEventListener('click', () => {
+      score += 1;
+      scoreDisplay.textContent = `Puan: ${score}`;
+      moveMouse();
+    });
+
+    function restartGame() {
+      score = 0;
+      scoreDisplay.textContent = 'Puan: 0';
+      moveMouse();
+    }
+
+    function downloadZip() {
+      const zipUrl = 'https://github.com/galaksibey/GalaksiOyun/raw/main/FareAvcisiOyunu.zip';
+      window.open(zipUrl, '_blank');
+    }
+
+    moveMouse(); // oyun başlasın
+  </script>
+</body>
+</html>
